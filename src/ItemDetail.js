@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Link } from "react-router-dom";
 
 function Item({ match }) {
   useEffect(() => {
@@ -18,11 +17,13 @@ function Item({ match }) {
       "https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_Key}"
     );
     const item = await fetchItem.json();
+    setItem(item);
+    console.log(item);
   };
 
   return (
     <div>
-      <h1>Item</h1>
+      <h1>{match.params.label}</h1>
     </div>
   );
 }
